@@ -4,6 +4,6 @@ import com.cg.go.entity.UserDTO;
 
 public interface LoginService {
 
-	boolean validateUser(UserDTO user);
+	UserDTO validateUser(UserDTO user);
 	
 }

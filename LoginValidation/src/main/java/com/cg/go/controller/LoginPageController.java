@@ -20,11 +20,8 @@ public class LoginPageController {
 	
 	
 	@GetMapping("/ValidateUser")
-	public String validateUser(@RequestBody UserDTO user)
+	public UserDTO validateUser(@RequestBody UserDTO user)
 	{
-		if(loginservice.validateUser(user) )
-			return "logged in";
-		else 
-			return "invalid data";
+		return loginservice.validateUser(user);
 	}
 }

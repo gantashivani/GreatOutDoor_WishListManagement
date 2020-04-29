@@ -13,12 +13,8 @@ public class LoginServiceImpl  implements LoginService{
 	private LoginDAO dao;
 
 	@Override
-	public boolean validateUser(UserDTO user) {
-		return 	dao.existsById(user.getUserId());
+	public UserDTO validateUser(UserDTO user) {
+		return 	dao.findOne(user.getUserId());
 		
 	}
-	
-	
-	
-
 }
