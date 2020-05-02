@@ -2,20 +2,26 @@ package com.cg.go.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="productslist")
 public class ProductDTO {
+	
 	@Id
+	@GeneratedValue
 	@Column(length=5)
 	private int productId;
+	
 	@Column(length=20)
 	private String productCatogery;
+	
 	@Column(length=20)
 	private String productName;
-
+	
+	
 		
 	public ProductDTO(int productId, String productCatogery, String productName) {
 		super();

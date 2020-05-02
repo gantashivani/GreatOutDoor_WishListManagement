@@ -12,32 +12,19 @@ import com.cg.go.service.AddToWishListService;
 
 @RestController
 @RequestMapping("/AddToWishList")
-@CrossOrigin(origins = "http://localhost:2021")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AddToWishListController {
 
 	@Autowired
 	private AddToWishListService service;
 	
 	
+	
+	/* Add the product details by reference of user id*/
 	@PostMapping("/Add")
-	public String addProductToWishList(@RequestBody UserDTO user)
+	public Object addProductToWishList(@RequestBody UserDTO user)
 	{
-			if ((service.addProductToWishList(user))!= null)
-				{
-					return "Added Sucessfully";
-				}else 
-					return "Unsucessful";
+		return 	service.addProductToWishList(user);
+				
 	}
-	
-	
-/*	@RequestMapping(value="/Add",method = RequestMethod.POST)
-	public String addProductToWishList(@RequestBody HashMap<Integer,ProductDTO> user)
-	{
-			if ((service.addProductToWishList(user))!= null)
-				{
-					return "Added Sucessfully";
-				}
-			else 
-				return "Unsucessful";
-	}*/
 }	

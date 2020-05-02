@@ -2,6 +2,8 @@ package com.cg.go.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,32 +17,27 @@ public class AddToWishListServiceImpl implements AddToWishListService{
 	@Autowired
 	private AddToWishListDAO dao;
 
-	
-	
 	@Override
+	@Transactional
 	public Object addProductToWishList(UserDTO user) {
 		                      
 		int userid=user.getUserId();
 		UserDTO  dataprevious=dao.fetch(userid);
+		
 		if(dataprevious!=null)
 			{
 			List<ProductDTO> products = dataprevious.getProduct();
-			System.out.println(products);
 			if(products != null)
 			{
 				products.addAll(user.getProduct());
 				user.setProduct(products);
-				System.out.println(products);
 				return dao.save(user);
-				 
 			}
 			else 
 				return  dao.save(user);
-			
 			}
 		else
 			return dao.save(user);
-		
 		}
 	
 }

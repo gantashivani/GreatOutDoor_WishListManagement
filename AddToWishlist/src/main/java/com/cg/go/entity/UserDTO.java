@@ -9,18 +9,24 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="userdto")
 public class UserDTO {
+	
 	@Id
-	@Column(length=5)
+	@Column(length=5,unique = true,nullable=false)
 	private int userId;
+	
 	@Column(length=10)
 	private String password;
+	
 	@Column(length=10)
 	private String userName;
 
+	
+	@NotNull
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<ProductDTO> product=new ArrayList<ProductDTO>();
 	

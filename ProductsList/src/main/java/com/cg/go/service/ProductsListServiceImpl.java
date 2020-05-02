@@ -19,6 +19,7 @@ public class ProductsListServiceImpl implements ProductsListService {
 
 	@Override
 	public List<ProductsDTO> viewProduct() {
-		return productdao.findAll();
+		List<ProductsDTO>  normalList=productdao.findAll(); 
+		return normalList;
 	}
 }
