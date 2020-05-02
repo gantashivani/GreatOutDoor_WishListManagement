@@ -18,7 +18,6 @@ public class AddToWishListServiceImpl implements AddToWishListService{
 	private AddToWishListDAO dao;
 
 	@Override
-	@Transactional
 	public Object addProductToWishList(UserDTO user) {
 		                      
 		int userid=user.getUserId();
