@@ -1,12 +1,10 @@
 package com.cg.go;
 
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertSame;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -21,7 +19,7 @@ public class ViewWishlistApplicationTests {
 	@Autowired
 	private ViewWishListService service;
 	
-	@Test(expected=NullPointerException.class)
+	@Test
 	public void  testViewWishList() {
 		
 		List<ProductsDTO> data=service.viewWishList(5);
@@ -31,16 +29,14 @@ public class ViewWishlistApplicationTests {
 		result.add(new ProductsDTO(68,"Food","Banana"));
 		result.add(new ProductsDTO(69,"Food","Banana"));
 		
-		System.err.print(result);
-		
-		assertSame(data,result);
+		Assertions.assertSame(data,result);
 	}
 	
-	@Test(expected=NullPointerException.class)
-	public void  testViewWishListInvalid() throws Exception{
-		
-		List<ProductsDTO> data=service.viewWishList(5);
-		//assertSame(data,null); //negative case
-		assertNotEquals(data,null);
-	}	
+//	@Test(expected=NullPointerException.class)
+//	public void  testViewWishListInvalid() throws Exception{
+//		
+//		List<ProductsDTO> data=service.viewWishList(5);
+//		//assertSame(data,null); //negative case
+//		assertNotEquals(data,null);
+//	}	
 }

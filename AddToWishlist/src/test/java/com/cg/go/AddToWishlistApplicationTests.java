@@ -1,11 +1,9 @@
 package com.cg.go;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,7 +17,7 @@ public class AddToWishlistApplicationTests {
 	@Autowired
 	private AddToWishListService service;
 	
-	@Test(expected=NullPointerException.class)
+	@Test
 	public void  testViewWishList() {
 		
 		UserDTO user=new UserDTO();
@@ -35,9 +33,27 @@ public class AddToWishlistApplicationTests {
 		
 		Object data=service.addProductToWishList(user);
 		
-		
-		assertEquals(data,1);
+		Assertions.assertEquals(data,1);
 	}
+
 	
+	@Test
+	public void  testViewWishListInvalidCase() {
+		
+		UserDTO user=new UserDTO();
+		
+		user.setUserId(1);
+		user.setPassword("A123");
+		user.setUserName("A");
+		
+		List<ProductDTO> products=new ArrayList<ProductDTO>();
+		products.add(new ProductDTO(177,"Food","Banana"));
+		user.setProduct(products);
+		
+		
+		Object data=service.addProductToWishList(user);
+		
+		Assertions.assertNotEquals(data,1);
+	}
 
 }
