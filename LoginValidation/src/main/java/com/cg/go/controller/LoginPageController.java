@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.cg.go.entity.UserDTO;
+import com.cg.go.exceptions.UserIdNotFound;
 import com.cg.go.service.LoginService;
 
 @RestController
@@ -20,8 +21,12 @@ public class LoginPageController {
 	
 	
 	@GetMapping("/ValidateUser/{user}")
-	public UserDTO validateUser(@PathVariable Integer user)
+	public UserDTO validateUser(@PathVariable Integer user) throws UserIdNotFound
 	{
-		return loginservice.validateUser(user);
+		if(loginservice.validateUser(user) == null)
+			 throw new UserIdNotFound("no user found");
+		else
+			return loginservice.validateUser(user);
+					
 	}
 }
