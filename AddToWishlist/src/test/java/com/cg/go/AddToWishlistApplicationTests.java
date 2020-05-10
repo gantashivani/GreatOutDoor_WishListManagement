@@ -33,7 +33,7 @@ public class AddToWishlistApplicationTests {
 		
 		Object data=service.addProductToWishList(user);
 		
-		Assertions.assertEquals(data,1);
+		Assertions.assertEquals(1,data);
 	}
 
 	
@@ -53,7 +53,7 @@ public class AddToWishlistApplicationTests {
 		
 		Object data=service.addProductToWishList(user);
 		
-		Assertions.assertNotEquals(data,1);
+		Assertions.assertNotEquals(1,data);
 	}
 
 }

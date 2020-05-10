@@ -1,5 +1,7 @@
 package com.cg.go.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +23,9 @@ public class LoginPageController {
 	
 	
 	@GetMapping("/ValidateUser/{user}")
-	public UserDTO validateUser(@PathVariable Integer user) throws UserIdNotFound
+	public Optional<UserDTO> validateUser(@PathVariable Integer user) throws UserIdNotFound
 	{
-		if(loginservice.validateUser(user) == null)
+		if(loginservice.validateUser(user) != null)
 			 throw new UserIdNotFound("no user found");
 		else
 			return loginservice.validateUser(user);

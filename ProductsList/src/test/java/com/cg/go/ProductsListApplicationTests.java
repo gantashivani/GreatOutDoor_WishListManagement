@@ -1,10 +1,9 @@
 package com.cg.go;
 
-import static org.junit.Assert.assertSame;
-
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,11 +18,19 @@ public class ProductsListApplicationTests {
 	@Autowired
 	private ProductsListService service;
 	
-	@Test(expected=NullPointerException.class)
+	@Test
 	public void  testProductsList() throws Exception {
 		
 		List<ProductsDTO> data=service.viewProduct();
-		assertSame(data,null);
+		Assertions.assertSame(null,data);
+	
+	}
+	
+	@Test
+	public void  testProductsListValid() throws Exception {
+		
+		List<ProductsDTO> data=service.viewProduct();
+		Assertions.assertNotNull(data);
 	
 	}
 }

@@ -1,9 +1,11 @@
 package com.cg.go.service;
 
+import java.util.Optional;
+
 import com.cg.go.entity.UserDTO;
 
 public interface LoginService {
 
-	UserDTO validateUser(Integer user);
+	Optional<UserDTO> validateUser(Integer user);
 	
 }

@@ -19,6 +19,8 @@ public class ViewWishlistApplicationTests {
 	@Autowired
 	private ViewWishListService service;
 	
+	
+	/*false case */
 	@Test
 	public void  testViewWishList() {
 		
@@ -32,11 +34,12 @@ public class ViewWishlistApplicationTests {
 		Assertions.assertSame(data,result);
 	}
 	
-//	@Test(expected=NullPointerException.class)
-//	public void  testViewWishListInvalid() throws Exception{
-//		
-//		List<ProductsDTO> data=service.viewWishList(5);
-//		//assertSame(data,null); //negative case
-//		assertNotEquals(data,null);
-//	}	
+	
+	/*true case */
+	@Test
+	public void  testViewWishListInvalid() throws Exception{
+		
+		List<ProductsDTO> data=service.viewWishList(5);
+		Assertions.assertNotEquals(data,null);
+	}	
 }
