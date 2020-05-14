@@ -16,9 +16,18 @@ public class ProductsListServiceImpl implements ProductsListService {
 	@Autowired 
 	private ProductDAO productdao;
 
+	@Override
+	public List<Object[]> viewProduct() {
+		return productdao.fetch(); 
+	}
 
 	@Override
-	public List<ProductsDTO> viewProduct() {
-		return productdao.findAll(); 
+	public List<ProductsDTO> searchProduct(String productCatogery) {
+		return productdao.searchProduct(productCatogery);
+	}
+
+	@Override
+	public List<ProductsDTO> filterProduct(double minPrize, double maxPrize) {
+		return productdao.filterProduct(minPrize,maxPrize);
 	}
 }

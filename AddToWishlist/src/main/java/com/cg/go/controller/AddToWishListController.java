@@ -18,13 +18,12 @@ public class AddToWishListController {
 	@Autowired
 	private AddToWishListService service;
 	
-	
-	
 	/* Add the product details by reference of user id*/
 	@PostMapping("/Add")
 	public Object addProductToWishList(@RequestBody UserDTO user)
 	{
-		return 	service.addProductToWishList(user);
-				
+	
+		Object result=service.addProductToWishList(user);
+		return result;	
 	}
 }	

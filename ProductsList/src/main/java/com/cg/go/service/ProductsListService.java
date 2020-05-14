@@ -7,7 +7,11 @@ import com.cg.go.dto.ProductsDTO;
 public interface ProductsListService {
 
 	
-	List<ProductsDTO>  viewProduct();
+	List<Object[]> viewProduct();
+
+	List<ProductsDTO> searchProduct(String productCatogery);
+
+	List<ProductsDTO> filterProduct(double minPrize, double maxPrize);
 
 
 }
